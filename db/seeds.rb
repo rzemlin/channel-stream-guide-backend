@@ -8,3 +8,5 @@
 slingTv = Service.create(name: 'Sling', description: 'cheapest route', img_url: 'not yet')
 hulu = Service.create(name: 'Hulu', description: 'meh', img_url: 'not yet')
 youtubeTv = Service.create(name: 'YouTubeTv', description: 'good choice', img_url: 'not yet')
+
+Channel.create(name: 'ESPN', genre: 'Sports', img_url: 'not yet', service_id: slingTv.id)
