@@ -1,3 +1,4 @@
 class Channel < ApplicationRecord
-    belongs_to :service
+    belongs_to :genre
+    has_many :services
 end
