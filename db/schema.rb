@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_02_153527) do
+ActiveRecord::Schema.define(version: 2022_04_03_145522) do
 
   create_table "channels", force: :cascade do |t|
     t.string "name"
     t.string "genre"
     t.string "img_url"
     t.integer "service_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "genre_id"
+    t.index ["genre_id"], name: "index_channels_on_genre_id"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -29,4 +37,5 @@ ActiveRecord::Schema.define(version: 2022_04_02_153527) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "channels", "genres"
 end
