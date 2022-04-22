@@ -1,9 +1,9 @@
 class Api::V1::ChannelsController < ApplicationController
 
     def index
-        @channels = Channel.all
+        channels = Channel.all
         #render json: @channels
-        render json: ChannelSerializer.new(@channels)
+        render json: ChannelSerializer.new(channels)
 
     end
 
