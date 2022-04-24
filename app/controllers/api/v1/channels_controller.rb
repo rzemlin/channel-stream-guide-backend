@@ -12,7 +12,7 @@ class Api::V1::ChannelsController < ApplicationController
         if channel.save
             render json: channel, status: :accepted
         else
-            render json: {errors: channel.errors.full_messages}, status: :unprocessible_entity
+            render json: {errors: channel.errors.full_messages}, status: :somethings_wrong
         end
     end
 
@@ -21,7 +21,7 @@ class Api::V1::ChannelsController < ApplicationController
     private
 
     def channel_params
-        params.require(:channel).permit(:name, :description, :genre_id, :img_url)
+        params.require(:channel).permit(:name, :description, :img_url, :genre_id)
     end
 
 end
