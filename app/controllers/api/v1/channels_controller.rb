@@ -21,7 +21,7 @@ class Api::V1::ChannelsController < ApplicationController
     private
 
     def channel_params
-        params.require(:channel).permit(:name, :service, :genre_id, :img_url)
+        params.require(:channel).permit(:name, :description, :genre_id, :img_url)
     end
 
 end

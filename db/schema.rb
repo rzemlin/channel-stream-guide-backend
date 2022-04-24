@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_03_145522) do
+ActiveRecord::Schema.define(version: 2022_04_24_154640) do
 
   create_table "channels", force: :cascade do |t|
     t.string "name"
-    t.string "genre"
     t.string "img_url"
     t.integer "service_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "genre_id"
+    t.string "description"
     t.index ["genre_id"], name: "index_channels_on_genre_id"
   end
 
