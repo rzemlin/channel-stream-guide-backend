@@ -10,7 +10,7 @@ class Api::V1::ChannelsController < ApplicationController
     def create
         channel = Channel.new(channel_params)
         if channel.save
-            render json: channel, status: :accepted
+            render json: ChannelSerializer.new(channel), status: :accepted
         else
             render json: {errors: channel.errors.full_messages}, status: :somethings_wrong
         end
