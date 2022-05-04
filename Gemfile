@@ -19,7 +19,7 @@ gem 'fast_jsonapi', '~> 1.5'
 gem 'simple_form', '~> 5.1'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
+gem 'better_errors', '~> 2.9', '>= 2.9.1'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
