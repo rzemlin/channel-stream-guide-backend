@@ -1,4 +1,4 @@
 class ServiceSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name
+  attributes :name, :img_url, :description
 end
