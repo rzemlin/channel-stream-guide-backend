@@ -1,27 +1,22 @@
 class Api::V1::ChannelsController < ApplicationController
+  def index
+    channels = Channel.all
+    #render json: @channels
+    render json: ChannelSerializer.new(channels)
+  end
 
-    def index
-        channels = Channel.all
-        #render json: @channels
-        render json: ChannelSerializer.new(channels)
-
+  def create
+    channel = Channel.new(channel_params)
+    if channel.save
+      render json: ChannelSerializer.new(channel), status: :accepted
+    else
+      render json: { errors: channel.errors.full_messages }, status: :somethings_wrong
     end
+  end
 
-    def create
-        channel = Channel.new(channel_params)
-        if channel.save
-            render json: ChannelSerializer.new(channel), status: :accepted
-        else
-            render json: {errors: channel.errors.full_messages}, status: :somethings_wrong
-        end
-    end
+  private
 
-
-
-    private
-
-    def channel_params
-        params.require(:channel).permit(:name, :description, :img_url, :genre_id, :service_id)
-    end
-
+  def channel_params
+    params.require(:channel).permit(:name, :description, :img_url, :genre_id, :service_id)
+  end
 end
