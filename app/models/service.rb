@@ -1,4 +1,4 @@
 class Service < ApplicationRecord
-    has_many :channels
-    has_many :genres, through: :channels
+    has_many :channels, through: :genre
+    has_many :genres
 end
