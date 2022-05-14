@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_09_193100) do
-
+ActiveRecord::Schema.define(version: 2022_05_14_183038) do
   create_table "channels", force: :cascade do |t|
     t.string "name"
     t.string "img_url"
@@ -20,7 +19,7 @@ ActiveRecord::Schema.define(version: 2022_05_09_193100) do
     t.integer "genre_id"
     t.string "description"
     t.integer "service_id"
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.index ["genre_id"], name: "index_channels_on_genre_id"
     t.index ["service_id"], name: "index_channels_on_service_id"
     t.index ["user_id"], name: "index_channels_on_user_id"
