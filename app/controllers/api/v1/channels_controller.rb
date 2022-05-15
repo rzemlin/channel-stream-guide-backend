@@ -1,4 +1,6 @@
 class Api::V1::ChannelsController < ApplicationController
+  skip_before_action :authorized, only: [:create, :index]
+
   def index
     channels = Channel.all
     #render json: @channels
