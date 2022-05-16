@@ -16,6 +16,15 @@ class Api::V1::ChannelsController < ApplicationController
     end
   end
 
+  def update
+    channel = Channel.find_by(id: params[:id])
+    if channel.update(kdrama_params)
+      render json: ChannelSerializer.new(channel), status: :accepted
+    else
+      render json: { errors: kdrama.errors.full_messages }
+    end
+  end
+
   private
 
   def channel_params
