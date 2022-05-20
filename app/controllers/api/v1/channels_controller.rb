@@ -1,5 +1,5 @@
 class Api::V1::ChannelsController < ApplicationController
-  skip_before_action :authorized, only: [:create, :index]
+  skip_before_action :authorized, only: [:delete, :edit, :create, :index]
 
   def index
     channels = Channel.all
@@ -16,12 +16,19 @@ class Api::V1::ChannelsController < ApplicationController
     end
   end
 
-  def update
+  def edit
     channel = Channel.find_by(id: params[:id])
-    if channel.update(kdrama_params)
+    if channel.update(channel_params)
       render json: ChannelSerializer.new(channel), status: :accepted
     else
       render json: { errors: kdrama.errors.full_messages }
+    end
+  end
+
+  def delete
+    channel = Channel.find_by(id: params[:id])
+    if channel.destroy
+      render json: { id: channel.id }
     end
   end
 
